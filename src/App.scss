@@ -1,0 +1,131 @@
+// Variables MUST be declared before anything else loads
+@import "mixins/variables";
+
+// Load mixins 
+@import "mixins/breakpoints";
+@import "mixins/spacing";
+@import "./_bootstrap";
+@import "mixins/components";
+
+// Basic setup
+@import "mixins/basic_setup";
+
+
+// // START NAVBAR
+.navbar {
+    width: 100vw;
+    z-index: 2;
+
+    &--fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+    .navbar--menu {
+        display: none;
+
+        @include breakpoint('xs-up'){
+            display: block;
+        }
+
+        * {
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: {
+                left: $mxs;
+                bottom: $xs;
+            }
+
+            li {
+                margin-bottom: $mxs;
+                border-top: 1px solid #fff;
+                padding-top: $pxs;
+            }
+
+            @include breakpoint('xs-up'){
+                position: absolute;
+                top: 25px;
+
+                li {
+                    display: inline-block;
+                    padding-right: $p;
+                    border-top: none;
+                    padding-top: 0;
+
+                    a:hover {
+                        padding-bottom: $pxs / 2;
+                        border-bottom: 3px solid white;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.menu--rectangle {
+    display: inline-block;
+    &:hover {
+        cursor: pointer;
+    }
+
+    &_icon {
+        font-size: 2rem;
+        margin: $mxs;
+
+        @include breakpoint('xs-up'){
+            // opacity: 0;
+        }
+    }
+}
+
+.img--flag {
+    position: fixed;
+    top: $mxs;
+    right: $mxs;
+
+    height: 40px;
+    width: 60px;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+}
+
+.menu--flag_holland .img--flag {
+    right: 100px;
+}
+
+.inactive {
+    opacity: 0.5;
+}
+
+section.mt-navbar {
+    @include breakpoint('xs'){
+        margin-top: $navbar-height;
+    }
+
+    @include breakpoint('xs-up'){
+
+    }
+}
+
+.mt-navbar {
+    margin-top: $navbar-height + $m;
+}
+// // EINDE NAVBAR
+
+.input--width {
+    width: 33.3vw;
+
+    @media screen and (max-width: 767px){
+        width: 100%;
+    }
+}
